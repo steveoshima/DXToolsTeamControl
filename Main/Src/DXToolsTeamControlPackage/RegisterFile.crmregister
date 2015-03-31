@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Register xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/crm/2011/tools/pluginregistration">
+  <Solutions>
+    <Solution Assembly="DXTools.CRM.Solutions.TeamControlPlugins.dll" Id="2b02fc58-f1ce-e411-ae46-d89d67641068" IsolationMode="Sandbox" SourceType="Database">
+      <PluginTypes>
+        <Plugin Description="Plug-in to PreValidate Publish" FriendlyName="PreValidatePublish" Name="DXTools.CRM.Solutions.TeamControlPlugins.PreValidatePublish" Id="32914437-97d7-e411-80f7-c4346bad725c" TypeName="DXTools.CRM.Solutions.TeamControlPlugins.PreValidatePublish">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidatePublish" Description="PreValidate Publish" Id="932069a3-a9d7-e411-9e7d-d89d6764365c" MessageName="Publish" Mode="Synchronous" PrimaryEntityName="" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+            <Step CustomConfiguration="" Name="PreValidatePublishAll" Description="PreValidate Publish All" Id="962069a3-a9d7-e411-9e7d-d89d6764365c" MessageName="PublishAll" Mode="Synchronous" PrimaryEntityName="" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+      </PluginTypes>
+    </Solution>
+  </Solutions>
+  <XamlWorkflows />
+</Register>

@@ -1,0 +1,18 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="dxtools_teamcontrolconfiguration">
+    <attribute name="dxtools_teamcontrolconfigurationid" />
+    <attribute name="dxtools_name" />
+    <attribute name="createdon" />
+    <attribute name="dxtools_url" />
+    <attribute name="statuscode" />
+    <attribute name="statecode" />
+    <attribute name="dxtools_securitykey" />
+    <attribute name="overriddencreatedon" />
+    <attribute name="modifiedon" />
+    <attribute name="modifiedonbehalfby" />
+    <attribute name="modifiedby" />
+    <attribute name="createdonbehalfby" />
+    <attribute name="createdby" />
+    <order attribute="dxtools_name" descending="false" />
+  </entity>
+</fetch>

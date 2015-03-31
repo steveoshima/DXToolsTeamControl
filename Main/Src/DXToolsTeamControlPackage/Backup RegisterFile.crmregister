@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Register xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/crm/2011/tools/pluginregistration">
+  <Solutions>
+    <Solution Assembly="DXTools.CRM.Solutions.TeamControlPlugins.dll" Id="00000000-0000-0000-0000-000000000000" IsolationMode="Sandbox" SourceType="Database">
+      <PluginTypes>
+        <Plugin Description="Plug-in to PreValidate Publish" FriendlyName="PreValidatePublish" Name="DXTools.CRM.Solutions.TeamControlPlugins.PreValidatePublish" Id="00000000-0000-0000-0000-000000000000" TypeName="DXTools.CRM.Solutions.TeamControlPlugins.PreValidatePublish">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PreValidatePublish" Description="PreValidate Publish" Id="00000000-0000-0000-0000-000000000000" MessageName="Publish" Mode="Synchronous" PrimaryEntityName="" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">            
+              <Images />
+            </Step>
+            <Step CustomConfiguration="" Name="PreValidatePublishAll" Description="PreValidate Publish All" Id="00000000-0000-0000-0000-000000000000" MessageName="PublishAll" Mode="Synchronous" PrimaryEntityName="" Rank="1" SecureConfiguration="" Stage="PreOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
+        </Plugin>
+      </PluginTypes>
+    </Solution>
+  </Solutions>
+  <XamlWorkflows />
+</Register>
