@@ -1,5 +1,5 @@
 # DXToolsTeamControl
-MS Dynamics CRM plugin that catching the publish requests and alerts all user running the windows tray app.
+Microsoft Dynamics CRM plugin that catches the publish requests and alerts all user running the windows tray app.
 
 Reason for creation:
 - MS Dynamics Online has the ability to lock when multiple developers are on the same enviroment doing publishing and importing activities. This tool helps everyone work in a more aware state. The need to constantly shout out to the rest of the team "I'M PUBLISHING!!" is removed.
