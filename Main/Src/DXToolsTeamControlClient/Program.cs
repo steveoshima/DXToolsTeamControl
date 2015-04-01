@@ -19,12 +19,12 @@ namespace DXTools.Azure.TeamControl.Client
         private static ApplicationContext applicationContext = null;
         private static NotifyIcon trayIcon = null;
         private static ContextMenu menu = null;
-        private static string executingPath = Path.GetDirectoryName(Application.ExecutablePath).Replace("bin\\Debug", string.Empty);
+        private static HubClients.TeamControlHubClient teamControlHub;
+        private static StringBuilder sbLog = new StringBuilder();
+
         private const string CONNECTIONSTRING_NAME = "XrmConnection";
         private const string MOBILE_SERVICE_KEY = "MobileServiceKey";
         private const string MOBILE_SERVICE_URI = "MobileServiceUri";
-        private static HubClients.TeamControlHubClient teamControlHub;
-        private static StringBuilder sbLog = new StringBuilder();
 
         /// <summary>
         /// The main entry point for the application.
@@ -53,7 +53,7 @@ namespace DXTools.Azure.TeamControl.Client
             });
 
             trayIcon = new NotifyIcon();
-            trayIcon.Icon = new Icon("icon.ico");
+            trayIcon.Icon = Properties.Resources.ConnectedIcon;
             trayIcon.Visible = true;
             trayIcon.ContextMenu = menu;
             trayIcon.MouseDown += OnTrayIconMouseDown;
