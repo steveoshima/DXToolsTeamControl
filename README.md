@@ -10,9 +10,9 @@ Requirements:
 - The windows tray app connecting to the hub
 
 Todo:
-- Alerts to include dynamics enviroment url/domain
+- Alerts to include dynamics enviroment url/domain - DONE
 - Alerts to include the enitity that is being published
-- Add "publish complete" check to crm plugin
+- Add "publish complete" check to crm plugin - DONE
 - Include crm "Import" messages/events plugin
 - Client publishing direct to crm, input and store crm login, drag and drop zip/select solution to import
 - Queuing publish (if possible and not slowing publish down too much)
