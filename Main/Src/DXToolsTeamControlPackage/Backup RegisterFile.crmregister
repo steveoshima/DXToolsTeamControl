@@ -13,6 +13,17 @@
               <Images />
             </Step>
           </Steps>
+        </Plugin
+		<Plugin Description="Plug-in to Post Publish" FriendlyName="PostPublish" Name="DXTools.CRM.Solutions.TeamControlPlugins.PostPublish" Id="00000000-0000-0000-0000-000000000000" TypeName="DXTools.CRM.Solutions.TeamControlPlugins.PostPublish">
+          <Steps>
+            <clear />
+            <Step CustomConfiguration="" Name="PostPublish" Description="Post-Operation of Publish" Id="00000000-0000-0000-0000-000000000000" MessageName="Publish" Mode="Synchronous" PrimaryEntityName="" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+            <Step CustomConfiguration="" Name="PostPublishAll" Description="Post-Operation of Publish All" Id="00000000-0000-0000-0000-000000000000" MessageName="PublishAll" Mode="Synchronous" PrimaryEntityName="" Rank="1" SecureConfiguration="" Stage="PostOutsideTransaction" SupportedDeployment="ServerOnly">
+              <Images />
+            </Step>
+          </Steps>
         </Plugin>
       </PluginTypes>
     </Solution>

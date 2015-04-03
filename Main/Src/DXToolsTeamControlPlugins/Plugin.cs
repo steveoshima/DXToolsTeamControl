@@ -22,7 +22,7 @@ namespace DXTools.CRM.Solutions.TeamControlPlugins
     /// </summary>    
     public class Plugin : IPlugin
     {
-        protected class LocalPluginContext
+        public class LocalPluginContext
         {
             internal IServiceProvider ServiceProvider
             {

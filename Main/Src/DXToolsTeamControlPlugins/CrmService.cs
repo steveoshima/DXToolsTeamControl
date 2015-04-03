@@ -49,6 +49,7 @@ namespace DXTools.CRM.Solutions.TeamControlPlugins
 	                               <entity name='dxtools_teamcontrolconfiguration'>
                                     <attribute name='dxtools_url' />
                                     <attribute name='dxtools_securitykey' />
+                                    <attribute name='dxtools_instanceurl' />
                                     <filter type='and'>
 	                                  <condition attribute='dxtools_name' operator='eq' value='{0}' />
 	                                </filter>
@@ -60,8 +61,9 @@ namespace DXTools.CRM.Solutions.TeamControlPlugins
 
             if (results.Entities.Count > 0)
             {
-                teamConfigurationFields.Add("mobileserviceurl", results.Entities[0]["dxtools_url"].ToString());
-                teamConfigurationFields.Add("mobileservicekey", results.Entities[0]["dxtools_securitykey"].ToString());
+                teamConfigurationFields.Add("mobileServiceUrl", results.Entities[0]["dxtools_url"].ToString());
+                teamConfigurationFields.Add("mobileServiceKey", results.Entities[0]["dxtools_securitykey"].ToString());
+                teamConfigurationFields.Add("mobileServiceInstanceUrl", results.Entities[0]["dxtools_instanceurl"].ToString());
             }
 
             return teamConfigurationFields;

@@ -1,95 +1,114 @@
-﻿<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+﻿<html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <title>DXTools Team Control Configuration Page</title>
-</head>
-<script type="text/javascript">
+    <script src="../../ClientGlobalContext.js.aspx" type="text/javascript"></script>
+    <script type="text/javascript">
 
-    document.onreadystatechange = function () {
-        var CRMSERVICE = window.location.protocol + "//" + window.location.host + '/XRMServices/2011/OrganizationData.svc/';
-        var odataSelect = "dxtools_teamcontrolconfigurationSet?$select=dxtools_teamcontrolconfigurationId,dxtools_URL,dxtools_securitykey&$filter=dxtools_name eq 'Azure Mobile Service'";
-
-        var retrieveRecordsReq = new XMLHttpRequest();
-        retrieveRecordsReq.open('GET', CRMSERVICE + odataSelect, false);
-        retrieveRecordsReq.setRequestHeader('Accept', 'application/json');
-        retrieveRecordsReq.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-        retrieveRecordsReq.send('');
-        var retrievedRecords = JSON.parse(retrieveRecordsReq.responseText).d;
-        //retrievedRecords.results;
-
-        var foundId;
-        if (retrievedRecords.results.length) {
-            var entity = retrievedRecords.results[0];
-            foundId = entity.dxtools_teamcontrolconfigurationId;
-            document.getElementById("mobileserviceurl").value = entity.dxtools_URL;
-            document.getElementById("mobileservicekey").value = entity.dxtools_securitykey;
+        function _getContext() {
+            var errorMessage = "Context is not available.";
+            if (typeof GetGlobalContext != "undefined")
+            { return GetGlobalContext(); }
+            else
+            {
+                if (typeof Xrm != "undefined") {
+                    return Xrm.Page.context;
+                }
+                else { throw new Error(errorMessage); }
+            }
         }
 
-        document.getElementById("mobileserviceupdate").onclick = function () {
-            var dxtools_teamcontrolconfigurationObject = {
-                dxtools_name: "Azure Mobile Service",
-                dxtools_URL: document.getElementById("mobileserviceurl").value,
-                dxtools_securitykey: document.getElementById("mobileservicekey").value
-            };
+        document.onreadystatechange = function () {
+            //var host = window.location.protocol + "//" + window.location.host
+            var host = _getContext().getClientUrl();
+            var CRMSERVICE = host + '/XRMServices/2011/OrganizationData.svc/';
+            var odataSelect = "dxtools_teamcontrolconfigurationSet?$select=dxtools_teamcontrolconfigurationId,dxtools_URL,dxtools_securitykey&$filter=dxtools_name eq 'Azure Mobile Service'";
 
-            if (!foundId) {
-                var req = new XMLHttpRequest();
-                req.open("POST", encodeURI(CRMSERVICE + "dxtools_teamcontrolconfiguration" + "Set"), true);
-                req.setRequestHeader("Accept", "application/json");
-                req.setRequestHeader("Content-Type", "application/json; charset=utf-8");
-                req.onreadystatechange = function () {
-                    if (this.readyState == 4 /* complete */) {
-                        if (this.status == 201) {
-                            alert("Created dxtools_teamcontrolconfiguration");
-                        }
-                        else {
-                            alert("Error creating dxtools_teamcontrolconfiguration");
-                        }
-                    }
-                };
-                dxtools_teamcontrolconfigurationObject.dxtools_teamcontrolconfigurationid = foundId,
-                req.send(JSON.stringify(dxtools_teamcontrolconfigurationObject));
+            var retrieveRecordsReq = new XMLHttpRequest();
+            retrieveRecordsReq.open('GET', CRMSERVICE + odataSelect, false);
+            retrieveRecordsReq.setRequestHeader('Accept', 'application/json');
+            retrieveRecordsReq.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+            retrieveRecordsReq.send('');
+            var retrievedRecords = JSON.parse(retrieveRecordsReq.responseText).d;
+            //retrievedRecords.results;
+
+            var foundId;
+            if (retrievedRecords.results.length) {
+                var entity = retrievedRecords.results[0];
+                foundId = entity.dxtools_teamcontrolconfigurationId;
+                document.getElementById("mobileserviceurl").value = entity.dxtools_URL;
+                document.getElementById("mobileservicekey").value = entity.dxtools_securitykey;
             }
-            else {
-                var req = new XMLHttpRequest();
-                req.open("POST", encodeURI(CRMSERVICE + "dxtools_teamcontrolconfiguration" + "Set(guid'" + foundId + "')"), true);
-                req.setRequestHeader("Accept", "application/json");
-                req.setRequestHeader("Content-Type", "application/json; charset=utf-8");
-                req.setRequestHeader("X-HTTP-Method", "MERGE");
-                req.onreadystatechange = function () {
-                    if (this.readyState == 4 /* complete */) {
-                        if (this.status == 204 || this.status == 1223) {
-                            alert("Updated dxtools_teamcontrolconfiguration");
-                        }
-                        else {
-                            alert("Error updating dxtools_teamcontrolconfiguration");
-                        }
-                    }
+
+            document.getElementById("mobileserviceupdate").onclick = function () {
+                var dxtools_teamcontrolconfigurationObject = {
+                    dxtools_name: "Azure Mobile Service",
+                    dxtools_URL: document.getElementById("mobileserviceurl").value,
+                    dxtools_securitykey: document.getElementById("mobileservicekey").value,
+                    dxtools_instanceURL: _getContext().getClientUrl()
                 };
-                req.send(JSON.stringify(dxtools_teamcontrolconfigurationObject));
-            }
-        };
-    }
-</script>
+
+                if (!foundId) {
+                    var req = new XMLHttpRequest();
+                    req.open("POST", encodeURI(CRMSERVICE + "dxtools_teamcontrolconfiguration" + "Set"), true);
+                    req.setRequestHeader("Accept", "application/json");
+                    req.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+                    req.onreadystatechange = function () {
+                        if (this.readyState == 4 /* complete */) {
+                            if (this.status == 201) {
+                                alert("Created dxtools_teamcontrolconfiguration");
+                            }
+                            else {
+                                alert("Error creating dxtools_teamcontrolconfiguration");
+                            }
+                        }
+                    };
+                    dxtools_teamcontrolconfigurationObject.dxtools_teamcontrolconfigurationid = foundId,
+                    req.send(JSON.stringify(dxtools_teamcontrolconfigurationObject));
+                }
+                else {
+                    var req = new XMLHttpRequest();
+                    req.open("POST", encodeURI(CRMSERVICE + "dxtools_teamcontrolconfiguration" + "Set(guid'" + foundId + "')"), true);
+                    req.setRequestHeader("Accept", "application/json");
+                    req.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+                    req.setRequestHeader("X-HTTP-Method", "MERGE");
+                    req.onreadystatechange = function () {
+                        if (this.readyState == 4 /* complete */) {
+                            if (this.status == 204 || this.status == 1223) {
+                                alert("Updated dxtools_teamcontrolconfiguration");
+                            }
+                            else {
+                                alert("Error updating dxtools_teamcontrolconfiguration");
+                            }
+                        }
+                    };
+                    req.send(JSON.stringify(dxtools_teamcontrolconfigurationObject));
+                }
+            };
+        }
+    </script>
+</head>
+
+
 <body>
-    <table cellpadding=3>
+    <table cellpadding="3">
         <tbody>
             <tr>
-                <td colspan="2"><img src="dxtoolslogo.png" /></td>
+                <td colspan="2"><img src="dxtoolslogo.png"></td>
             </tr>
             <tr>
-                <td align=right>Enter your Azure Mobile Service URL: </td>
-                <td><input type="text" name="mobileserviceurl" id="mobileserviceurl" style="width:500px"></td>
+                <td align="right">Enter your Azure Mobile Service URL: </td>
+                <td><input name="mobileserviceurl" id="mobileserviceurl" style="width: 500px;" type="text"></td>
             </tr>
             <tr>
-                <td align=right>Enter your Azure Mobile Service Key: </td>
-                <td><input type="password" name="mobileservicekey" id="mobileservicekey" style="width:500px"></td>
+                <td align="right">Enter your Azure Mobile Service Key: </td>
+                <td><input name="mobileservicekey" id="mobileservicekey" style="width: 500px;" type="password"></td>
             </tr>
             <tr>
-                <td><button type="button" id="mobileserviceupdate">Update</button></td>
+                <td><button id="mobileserviceupdate" type="button">Update</button></td>
             </tr>
         </tbody>
     </table>
+
 </body>
 </html>
