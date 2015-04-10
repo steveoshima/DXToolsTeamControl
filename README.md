@@ -14,8 +14,9 @@ Todo:
 - Alerts to include the enitity that is being published
 - Add "publish complete" check to crm plugin - DONE
 - Include crm "Import" messages/events plugin
-- Client publishing direct to crm, input and store crm login, drag and drop zip/select solution to import
+- Allow client tray app to publish direct to crm, input and store crm login, drag and drop zip/select solution to import
 - Queuing publish (if possible and not slowing publish down too much)
-- List all users online
+- List all users online in the client tray app
 - Improve error logging
 - Create mobile client apps, just for the fun of it - android/ios/windows10
+- Change client tray icon based on state
